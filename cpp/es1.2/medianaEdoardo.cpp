@@ -26,7 +26,7 @@ int main(){
     int length;
     double mediana;
     bool pari;
-    
+
     //controllo input
     do{
         cout<<"Quanti numeri vuoi calcolarne la mediana? minimo 2\numbers";
@@ -56,7 +56,7 @@ int main(){
         mediana=(numbers.at(length/2)+numbers.at(length/2-1))/2;
     else
         mediana=numbers.at(length/2);
-
+ 
     //stampa
     cout<<"mediana: "<<mediana<<endl;
     return 0;
