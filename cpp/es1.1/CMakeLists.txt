@@ -4,5 +4,5 @@ project(es1.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
+ 
 add_executable(Es1Day1 mediaEdoardo.cpp)
