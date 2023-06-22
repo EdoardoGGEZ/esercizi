@@ -27,9 +27,9 @@ class Date {
             adjust();
         }
         void adjust(){
-        bool esci;
+        bool esc;
         do{
-            esci=true;
+            esc=true;
             int days;
             if(month==1||month==3||month==5||month==7||month==8||month==10||month==12)
                 days=31;
@@ -42,18 +42,18 @@ class Date {
                     days=28;
 
             if(day>days){
-                esci=false;
+                esc=false;
                 day-=days;
                 month++;
             }
 
             if(month>12){
-                esci=false;
+                esc=false;
                 month-=12;
                 year++;
             }
         }
-        while(!esci);
+        while(!esc);
     }
 };
 ostream& operator<<(ostream &out, Date &pt){
@@ -70,24 +70,24 @@ int main(){
     Date date;
     cin>>scelta;
     if(scelta==1){
-        int anno, mese, giorno;
-        cout<<"anno?\n";
-        cin>>anno;
-        cout<<"mese?\n";
-        cin>>mese;
-        cout<<"giorno?\n";
-        cin>>giorno;
-        Date date {giorno, mese, anno};
+        int year, month, day;
+        cout<<"year?\n";
+        cin>>year;
+        cout<<"month?\n";
+        cin>>month;
+        cout<<"day?\n";
+        cin>>day;
+        Date date {day, month, year};
     }
     
     do{
-        cout<<"1) informazine\n2) data\n3) confronto data\n4) tempo passato\n0) esci\n";//raw string
+        cout<<"1) informazine\n2) data\n3) confronto data\n4) tempo passato\n0) esc\n";//raw string
         cin>>scelta;
         switch (scelta)
         {
         case 1:
             int app;
-            cout<<"1) anno\n2) mese\n3) giorno\n";
+            cout<<"1) year\n2) month\n3) day\n";
             cin>>app;
             if(app==1)
                 cout<<date.getYear()<<endl;
@@ -100,14 +100,14 @@ int main(){
             cout<<date;
             break;
         case 3:{
-            int anno, mese, giorno;
-            cout<<"anno?\n";
-            cin>>anno;
-            cout<<"mese?\n";
-            cin>>mese;
-            cout<<"giorno?\n";
-            cin>>giorno;
-            Date date2 {giorno, mese, anno};
+            int year, month, day;
+            cout<<"year?\n";
+            cin>>year;
+            cout<<"month?\n";
+            cin>>month;
+            cout<<"day?\n";
+            cin>>day;
+            Date date2 {day, month, year};
             if(date==date2)
                 cout<<"le date coincidono\n";
             else
