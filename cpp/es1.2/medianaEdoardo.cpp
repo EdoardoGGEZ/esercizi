@@ -4,7 +4,7 @@
 using namespace std;
 
 //algoritmo di sorting
-vector<double> bubleSort(vector<double> numbers){
+void bubleSort(vector<double>& numbers){
     bool esc;
     do{
         esc=true;
@@ -18,7 +18,6 @@ vector<double> bubleSort(vector<double> numbers){
         }
     }
     while(!esc);
-    return numbers;
 }
 int main(){
     //variabili
@@ -49,7 +48,7 @@ int main(){
     }
 
     //riordina i numeri
-    numbers=bubleSort(numbers);
+    bubleSort(numbers);
 
     //calcolo media
     if(even)
