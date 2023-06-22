@@ -1,4 +1,5 @@
 #include<iostream>
+#include<algorithm>
 #include<vector>
 
 using namespace std;
@@ -10,9 +11,7 @@ void bubleSort(vector<double>& numbers){
         esc=true;
         for(int i=0;i<numbers.size()-1;i++){
             if(numbers.at(i)>numbers.at(i+1)){
-                int app=numbers.at(i);
-                numbers.at(i)=numbers.at(i+1);
-                numbers.at(i+1)=app;
+                swap(numbers[i],numbers[i+1]);
                 esc=false;
             }
         }
