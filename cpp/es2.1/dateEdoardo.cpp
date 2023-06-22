@@ -14,10 +14,47 @@ class Date {
         int getYear() {return year;}
         friend ostream& operator<<(ostream &out, Date &pt);
         friend bool operator==(Date &first, Date &second);
-        friend void addDays(int n, Date d);
-        friend void addMonth(int n, Date d);
-        friend void addYear(int n, Date d);
-        friend void adjust(Date d);
+        void addDays(int n){
+            day+=n;
+            adjust();
+        }
+        void addMonth(int n){
+            month+=n;
+            adjust();
+        }
+        void addYear(int n){
+            year+=n;
+            adjust();
+        }
+        void adjust(){
+        bool esci;
+        do{
+            esci=true;
+            int days;
+            if(month==1||month==3||month==5||month==7||month==8||month==10||month==12)
+                days=31;
+            else if(month==4||month==6||month==9||month==11)
+                days=30;
+            else
+                if(year%4==0)
+                    days=29;
+                else
+                    days=28;
+
+            if(day>days){
+                esci=false;
+                day-=days;
+                month++;
+            }
+
+            if(month>12){
+                esci=false;
+                month-=12;
+                year++;
+            }
+        }
+        while(!esci);
+    }
 };
 ostream& operator<<(ostream &out, Date &pt){
     out<<pt.day<<"-"<<pt.month<<"-"<<pt.year<<endl;
@@ -26,47 +63,7 @@ ostream& operator<<(ostream &out, Date &pt){
 bool operator==(Date &first, Date &second){
     return (first.day==second.day)&&(first.month==second.month)&&(first.year==second.year);
 }
-void addDays(int n, Date d){
-    d.day+=n;
-    adjust(d);
-}
-void addMonth(int n, Date d){
-    d.month+=n;
-    adjust(d);
-}
-void addYear(int n, Date d){
-    d.year+=n;
-    adjust(d);
-}
-void adjust(Date d){
-    bool esci;
-    do{
-    esci=true;
-    int days;
-    if(d.month==1||d.month==3||d.month==5||d.month==7||d.month==8||d.month==10||d.month==12)
-        days=31;
-    else if(d.month==4||d.month==6||d.month==9||d.month==11)
-        days=30;
-    else
-        if(d.year%4==0)
-            days=29;
-        else
-            days=28;
 
-    if(d.day>days){
-        esci=false;
-        d.day-=days;
-        d.month++;
-    }
-
-    if(d.month>12){
-        esci=false;
-        d.month-=12;
-        d.year++;
-    }
-    }
-    while(!esci);
-}
 int main(){
     cout<<"1) inserire data\n2) data default (1 gen 1970)\n";
     int scelta;
@@ -127,7 +124,7 @@ int main(){
                     cin>>n;
                 }
                 while(!(n>=0));
-                addDays(n,date);
+                date.addDays(n);
             }
             else if(app=2){
                 do{
@@ -135,7 +132,7 @@ int main(){
                     cin>>n;
                 }
                 while(!(n>=0));
-                addMonth(n,date);
+                date.addMonth(n);
             }
             else{
                 do{
@@ -143,7 +140,7 @@ int main(){
                     cin>>n;
                 }
                 while(!(n>=0));
-                addYear(n,date);
+                date.addYear(n);
             }
             break;
             }
