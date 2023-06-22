@@ -3,52 +3,61 @@
 
 using namespace std;
 
-vector<double> bubleSort(vector<double> n){//algoritmo di sorting
-    bool esci;
+//algoritmo di sorting
+vector<double> bubleSort(vector<double> numbers){
+    bool esc;
     do{
-        esci=true;//condizione di uscita
-        for(int i=0;i<n.size()-1;i++){
-            if(n.at(i)>n.at(i+1)){//se il vector non è in ordine
-                int app=n.at(i);
-                n.at(i)=n.at(i+1);
-                n.at(i+1)=app;
-                esci=false;//condizione di uscita falsa
+        esc=true;
+        for(int i=0;i<numbers.size()-1;i++){
+            if(numbers.at(i)>numbers.at(i+1)){
+                int app=numbers.at(i);
+                numbers.at(i)=numbers.at(i+1);
+                numbers.at(i+1)=app;
+                esc=false;
             }
         }
     }
-    while(!esci);
-    return n;
+    while(!esc);
+    return numbers;
 }
 int main(){
-    vector<double> n;
-    int lengh, som=0;//variabili
+    //variabili
+    vector<double> numbers;
+    int length;
     double mediana;
     bool pari;
+    
+    //controllo input
     do{
-        cout<<"Quanti numeri vuoi calcolarne la mediana? minimo 2\n";
-        cin>>lengh;
+        cout<<"Quanti numeri vuoi calcolarne la mediana? minimo 2\numbers";
+        cin>>length;
     }
-    while(lengh<2);//controllo input
+    while(length<2);
 
-    if(lengh%2==0)
+    //controllo parità
+    if(length%2==0)
         pari=true;
     else
         pari=false;
 
-    for(int i=0;i<lengh;i++){//input numeri
+    //input numeri
+    for(int i=0;i<length;i++){
         cout<<"Numero "<<i+1<<": ";
         int app;
         cin>>app;
-        n.push_back(app);
+        numbers.push_back(app);
     }
 
-    n=bubleSort(n);//riordina i numeri
+    //riordina i numeri
+    numbers=bubleSort(numbers);
 
+    //calcolo media
     if(pari)
-        mediana=(n.at(lengh/2)+n.at(lengh/2-1))/2;
+        mediana=(numbers.at(length/2)+numbers.at(length/2-1))/2;
     else
-        mediana=n.at(lengh/2);
+        mediana=numbers.at(length/2);
 
+    //stampa
     cout<<"mediana: "<<mediana<<endl;
     return 0;
 }
