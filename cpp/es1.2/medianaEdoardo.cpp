@@ -24,21 +24,21 @@ int main(){
     //variabili
     vector<double> numbers;
     int length;
-    double mediana;
-    bool pari;
+    double median;
+    bool even;
 
     //controllo input
     do{
-        cout<<"Quanti numeri vuoi calcolarne la mediana? minimo 2\numbers";
+        cout<<"Di quanti numeri vuoi calcolarne la mediana? minimo 2\n";
         cin>>length;
     }
     while(length<2);
 
     //controllo parità
     if(length%2==0)
-        pari=true;
+        even=true;
     else
-        pari=false;
+        even=false;
 
     //input numeri
     for(int i=0;i<length;i++){
@@ -52,12 +52,12 @@ int main(){
     numbers=bubleSort(numbers);
 
     //calcolo media
-    if(pari)
-        mediana=(numbers.at(length/2)+numbers.at(length/2-1))/2;
+    if(even)
+        median=(numbers.at(length/2)+numbers.at(length/2-1))/2;
     else
-        mediana=numbers.at(length/2);
+        median=numbers.at(length/2);
  
     //stampa
-    cout<<"mediana: "<<mediana<<endl;
+    cout<<"mediana: "<<median<<endl;
     return 0;
 }
