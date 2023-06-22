@@ -1,24 +1,30 @@
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
-int main(){
-    int lengh, som=0, media;//variabili
-    do{
-        cout<<"Quanti numeri vuoi sommare e calcolarne la media? minimo 2\n";
-        cin>>lengh;
-    }
-    while(lengh<2);//controllo input
+int main()
+{
+    // variabili
+    int length;
+    int sum = 0;
+    int average;
+    do
+    {
+        cout << "Quanti numeri vuoi summare e calcolarne la average? minimo 2\n";
+        cin >> length;
+    } while (length < 2); // controllo input
 
-    for(int i=0;i<lengh;i++){//input numeri e somma
-        cout<<"Numero "<<i+1<<": ";
+    for (int i = 0; i < length; i++)
+    { // input numeri e summa
+        cout << "Numero " << i + 1 << ": ";
         int app;
-        cin>>app;
-        som+=app;
+        cin >> app;
+        sum += app;
     }
 
-    media=som/lengh;//calcolo media
+    average = sum / length; // calcolo average
 
-    cout<<"somma: "<<som<<endl<<"media: "<<media<<endl;
+    cout << "summa: " << sum << endl
+         << "average: " << average << endl;
     return 0;
 }
