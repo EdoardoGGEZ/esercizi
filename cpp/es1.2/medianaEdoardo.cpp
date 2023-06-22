@@ -51,9 +51,9 @@ int main(){
 
     //calcolo media
     if(even)
-        median=(numbers.at(length/2)+numbers.at(length/2-1))/2;
+        median=(numbers[length/2]+numbers[length/2-1])/2;
     else
-        median=numbers.at(length/2);
+        median=numbers[length/2];
  
     //stampa
     cout<<"mediana: "<<median<<endl;
