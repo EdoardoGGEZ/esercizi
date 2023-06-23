@@ -5,16 +5,17 @@
 
 using namespace std;
 
-vector<unsigned> bubleSort(vector<unsigned> n){//algoritmo di sorting
+//algoritmo di sorting
+vector<unsigned> bubleSort(vector<unsigned> n){
     bool esci;
     do{
-        esci=true;//condizione di uscita
+        esci=true;
         for(int i=0;i<n.size()-1;i++){
-            if(n.at(i)>n.at(i+1)){//se il vector non è in ordine
+            if(n.at(i)>n.at(i+1)){
                 int app=n.at(i);
                 n.at(i)=n.at(i+1);
                 n.at(i+1)=app;
-                esci=false;//condizione di uscita falsa
+                esci=false;
             }
         }
     }
@@ -22,41 +23,47 @@ vector<unsigned> bubleSort(vector<unsigned> n){//algoritmo di sorting
     return n;
 }
 int main(){
-    freopen("canto1.txt","r",stdin);//input da file
+    //input da file
+    freopen("canto1.txt","r",stdin);
 
-    bool esci =false;//variabili
+    //variabili
+    bool esci =false;
     vector<string> parole;
     vector<unsigned> nParole;
-    do{//input parole
+    //input parole
+    do{
         string app;
         cin>>app;
-        if(app.size()>3)//controllo parola
+        if(app.size()>3)
             parole.push_back(app);
     }
     while(!esci);
 
     // Suggerimento: usare `std::map` o `std::unordered_map`
 
-    for(int i=0;i<parole.size();i++){//ciclo delle parole
+    //ciclo delle parole
+    for(int i=0;i<parole.size();i++){
         string app=parole.at(i);
         nParole.push_back(1);
-        for(int j=i+1;i<parole.size();j++){//conto delle parole doppioni
+        for(int j=i+1;i<parole.size();j++){
             if(parole.at(j)==app){
                 nParole.at(i)++;
-            //    parole.erase(j);
+                //parole.erase(j);
             }
         }
     }
 
-    vector<unsigned> ordine=bubleSort(nParole);//riordina i numeri
+    //riordina i numeri
+    vector<unsigned> ordine=bubleSort(nParole);
 
-    for(int i=0;i<MAX;i++){//scrive le MAX parole più ripetute
+    //stampa le MAX parole più ripetute
+    for(int i=0;i<MAX;i++){
         string parola;
         for(int j=0;j<nParole.size();j++){
             if(nParole.at(j)==ordine.at(i)){
                 parola=parole.at(j);
-            //    parole.erase(j);
-            //    nParole.erase(j);
+                //parole.erase(j);
+                //nParole.erase(j);
                 j--;
             }
         }
