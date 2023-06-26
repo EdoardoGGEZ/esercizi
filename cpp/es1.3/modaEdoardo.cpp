@@ -19,8 +19,8 @@ void bubleSort(vector<Word> &vector){
     bool esci;
     do{
         esci=true;
-        for(int i=0;i<vector.size()-1;i++){
-            if(vector[i].nTimes>vector[i+1].nTimes){
+        for(int i=0;i<vector.size();i++){
+            if(vector[i].nTimes<vector[i+1].nTimes){
                 swap(vector[i],vector[i+1]);
                 esci=false;
             }
@@ -48,15 +48,14 @@ int main(){
         }
         if(add.word.size()>3){
             words.push_back(add);
-            std::cout<<add.word<<endl;
         }
     }
-    while(input.good());
+    while(input.eof());
     input.close();
     } else{
         std::cout<<"file mancante!";
     }
-
+    std::cout<<"[input]\n";
     //ciclo conteggio parole
     for(int i=0;i<words.size();i++){
         string app=words[i].word;
@@ -67,24 +66,13 @@ int main(){
             }
         }
     }
-    
+    std::cout<<"[conteggio]\n";
     //riordina i numeri
     bubleSort(words);
-
-/*
+    std::cout<<"[sort]\n";
     //stampa le MAX parole più ripetute
     for(int i=0;i<MAX;i++){
-        string parola;
-        for(int j=0;j<nParole.size();j++){
-            if(nParole.at(j)==ordine.at(i)){
-                parola=parole.at(j);
-                //parole.erase(j);
-                //nParole.erase(j);
-                j--;
-            }
-        }
-        cout<<i<<" parola piu' ripetuta: "<<parola;
+        std::cout<<i+1<<" parola piu' ripetuta: "<<words[i].word;
     }
-*/
     return 0;
 }
