@@ -1,58 +1,76 @@
 #include<iostream>
+#include<fstream>
 #include<vector>
 #include<string>
+//MAX parole più ripetute
 #define MAX 10
 
 using namespace std;
 
+//struct dove salvare le parole
+struct Word
+{
+    string word;
+    int nTimes;
+};
+
 //algoritmo di sorting
-vector<unsigned> bubleSort(vector<unsigned> n){
+vector<unsigned> bubleSort(vector<unsigned> numbers){
     bool esci;
     do{
         esci=true;
-        for(int i=0;i<n.size()-1;i++){
-            if(n.at(i)>n.at(i+1)){
-                int app=n.at(i);
-                n.at(i)=n.at(i+1);
-                n.at(i+1)=app;
+        for(int i=0;i<numbers.size()-1;i++){
+            if(numbers.at(i)>numbers.at(i+1)){
+                int app=numbers.at(i);
+                numbers.at(i)=numbers.at(i+1);
+                numbers.at(i+1)=app;
                 esci=false;
             }
         }
     }
     while(!esci);
-    return n;
+    return numbers;
 }
 int main(){
     //input da file
-    freopen("canto1.txt","r",stdin);
+    ifstream input ("../canto1.txt");
 
     //variabili
-    bool esci =false;
-    vector<string> parole;
-    vector<unsigned> nParole;
+    vector<Word> words;
+
     //input parole
+    if(input.is_open()){
     do{
-        string app;
-        cin>>app;
-        if(app.size()>3)
-            parole.push_back(app);
+        Word add={"",1};
+        char letter;
+        add.word.clear();
+        letter=input.get();
+        while(letter!=' '&&letter!='\n'&&letter!='.'&&letter!=','&&letter!=';'&&letter!=':'&&letter!='\''&&letter!='!'&&letter!='\"'){
+            add.word+=letter;
+            letter=input.get();
+        }
+        if(add.word.size()>3){
+            words.push_back(add);
+            std::cout<<add.word<<endl;
+        }
     }
-    while(!esci);
+    while(input.good());
+    input.close();
+    } else{
+        std::cout<<"file mancante!";
+    }
 
-    // Suggerimento: usare `std::map` o `std::unordered_map`
-
-    //ciclo delle parole
-    for(int i=0;i<parole.size();i++){
-        string app=parole.at(i);
-        nParole.push_back(1);
-        for(int j=i+1;i<parole.size();j++){
-            if(parole.at(j)==app){
-                nParole.at(i)++;
-                //parole.erase(j);
+    //ciclo conteggio parole
+    for(int i=0;i<words.size();i++){
+        string app=words[i].word;
+        for(int j=i+1;i<words.size();j++){
+            if(words[j].word==app){
+                words[i].nTimes++;
+                words.erase(words.begin()+j);
             }
         }
     }
-
+    /*
     //riordina i numeri
     vector<unsigned> ordine=bubleSort(nParole);
 
@@ -69,6 +87,6 @@ int main(){
         }
         cout<<i<<" parola piu' ripetuta: "<<parola;
     }
-
+*/
     return 0;
 }
