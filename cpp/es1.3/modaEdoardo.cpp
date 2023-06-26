@@ -15,21 +15,18 @@ struct Word
 };
 
 //algoritmo di sorting
-vector<unsigned> bubleSort(vector<unsigned> numbers){
+void bubleSort(vector<Word> &vector){
     bool esci;
     do{
         esci=true;
-        for(int i=0;i<numbers.size()-1;i++){
-            if(numbers.at(i)>numbers.at(i+1)){
-                int app=numbers.at(i);
-                numbers.at(i)=numbers.at(i+1);
-                numbers.at(i+1)=app;
+        for(int i=0;i<vector.size()-1;i++){
+            if(vector[i].nTimes>vector[i+1].nTimes){
+                swap(vector[i],vector[i+1]);
                 esci=false;
             }
         }
     }
     while(!esci);
-    return numbers;
 }
 int main(){
     //input da file
@@ -70,10 +67,11 @@ int main(){
             }
         }
     }
-    /*
+    
     //riordina i numeri
-    vector<unsigned> ordine=bubleSort(nParole);
+    bubleSort(words);
 
+/*
     //stampa le MAX parole più ripetute
     for(int i=0;i<MAX;i++){
         string parola;
