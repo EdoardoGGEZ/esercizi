@@ -10,18 +10,10 @@ Window {
         anchors.top: parent.top
         anchors.topMargin: 150
         spacing: 100
-        Bar {
-            velocity: 50
-        }
         Bar {}
-        Bar {
-            velocity: 200
-        }
-        Bar {
-            velocity: 500
-        }
-        Bar {
-            velocity: 1000
-        }
+        Bar {}
+        Bar {}
+        Bar {}
+        Bar {}
     }
 }

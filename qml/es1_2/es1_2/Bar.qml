@@ -2,7 +2,7 @@ import QtQuick
 
 Column {
     id: dad
-    property int velocity: 100
+    property int velocity: 500
     spacing: 10
     Text {
         id: percentageText
@@ -11,12 +11,7 @@ Column {
             repeat: true
             running: true
             triggeredOnStart: true
-            onTriggered: {
-                if (((bar.percentage)).toFixed(2) <= 1)
-                    parent.text = ((bar.percentage * 100)).toFixed(0) + "%"
-                else
-                    parent.stop()
-            }
+            onTriggered: parent.text = (bar.percentage).toFixed(2)
         }
     }
 
@@ -47,10 +42,8 @@ Column {
                 running: true
                 triggeredOnStart: true
                 onTriggered: {
-                    if (((bar.percentage)).toFixed(2) < 1)
-                        parent.percentage = parent.percentage + 0.01
-                    else
-                        parent.stop()
+                    var rand = Math.random() % 1
+                    parent.percentage = rand
                 }
             }
         }
