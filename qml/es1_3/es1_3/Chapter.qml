@@ -4,28 +4,41 @@ Rectangle {
     id: dad
     width: 1420
     height: 324
-    color: "red"
+
     Rectangle {
         id: content
-        width: parent.width / 3
-        height: parent.height / 5
         anchors.centerIn: parent
         color: "green"
         state: "default"
+
+        MouseArea {
+            id: myMouseArea
+            anchors.fill: parent
+        }
 
         states: [
             State {
                 name: "default"
                 PropertyChanges {
-                    target: object
+                    target: content
+                    width: parent.width / 3
+                    height: parent.height / 5
+                }
+                PropertyChanges {
+                    target: myMouseArea
+                    onClicked: parent.state = "expanded"
                 }
             },
             State {
                 name: "expanded"
                 PropertyChanges {
                     target: content
-                    width: dad.width
-                    height: dad.height
+                    width: parent.width
+                    height: parent.height
+                }
+                PropertyChanges {
+                    target: myMouseArea
+                    onClicked: parent.state = "default"
                 }
             }
         ]
