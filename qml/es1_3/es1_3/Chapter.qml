@@ -4,12 +4,26 @@ Rectangle {
     id: dad
     width: 1420
     height: 324
+    property string titolo: value
+    property string contenuto: value
 
     Rectangle {
         id: content
         anchors.centerIn: parent
-        color: "green"
+        color: "black"
         state: "default"
+        radius: 10
+
+        Text {
+            id: text
+            width: parent.width
+            height: parent.height - 20
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlighVCenter
+            font.pointSize: 40
+            color: "white"
+            text: titolo
+        }
 
         MouseArea {
             id: myMouseArea
@@ -22,7 +36,7 @@ Rectangle {
                 PropertyChanges {
                     target: content
                     width: parent.width / 3
-                    height: parent.height / 5
+                    height: parent.height / 5 + 20
                 }
                 PropertyChanges {
                     target: myMouseArea
@@ -39,6 +53,12 @@ Rectangle {
                 PropertyChanges {
                     target: myMouseArea
                     onClicked: parent.state = "default"
+                }
+                PropertyChanges {
+                    target: text
+                    horizontalAlignment: text.AlignLeft
+                    font.pointSize: 20
+                    text: contenuto
                 }
             }
         ]

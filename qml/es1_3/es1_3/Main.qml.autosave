@@ -16,11 +16,11 @@ Window {
             contenuto: "la papaia"
         }
         Chapter {
-            titolo: "CAPITOLO 1"
+            titolo: "CAPITOLO 2"
             contenuto: "l'ananas"
         }
         Chapter {
-            titolo: "CAPITOLO 1"
+            titolo: "CAPITOLO 3"
             contenuto: "l'avocado"
         }
     }
