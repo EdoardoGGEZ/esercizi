@@ -5,13 +5,17 @@ Rectangle {
     width: 240
     height: 240
     radius: 120
-    anchors.centerIn: parent
     state: "off"
 
     MouseArea {
         id: myMouseArea
         anchors.fill: parent
-        onClicked: parent.state = "on"
+        onClicked: {
+            if (parent.state === "off")
+                parent.state = "on"
+            else
+                parent.state = "off"
+        }
     }
 
     Behavior on color {
@@ -27,20 +31,12 @@ Rectangle {
                 target: button
                 color: "green"
             }
-            PropertyChanges {
-                target: myMouseArea
-                onClicked: parent.state = "off"
-            }
         },
         State {
             name: "off"
             PropertyChanges {
                 target: button
                 color: "red"
-            }
-            PropertyChanges {
-                target: myMouseArea
-                onClicked: parent.state = "on"
             }
         }
     ]
