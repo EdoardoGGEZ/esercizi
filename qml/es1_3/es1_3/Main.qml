@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Window
 
 Window {
-    width: 1920
+    width: 1840
     height: 1020
     visible: true
 
