@@ -19,7 +19,6 @@ Rectangle {
             width: parent.width
             height: parent.height - 20
             horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlighVCenter
             font.pointSize: 40
             color: "white"
             text: titolo
@@ -28,6 +27,24 @@ Rectangle {
         MouseArea {
             id: myMouseArea
             anchors.fill: parent
+            onClicked: {
+                if (content.state === "default") {
+                    parent.state = "expanded"
+                } else
+                    parent.state = "default"
+            }
+        }
+
+        Behavior on width {
+            NumberAnimation {
+                duration: 300
+            }
+        }
+
+        Behavior on height {
+            NumberAnimation {
+                duration: 300
+            }
         }
 
         states: [
@@ -38,10 +55,6 @@ Rectangle {
                     width: parent.width / 3
                     height: parent.height / 5 + 20
                 }
-                PropertyChanges {
-                    target: myMouseArea
-                    onClicked: parent.state = "expanded"
-                }
             },
             State {
                 name: "expanded"
@@ -49,10 +62,6 @@ Rectangle {
                     target: content
                     width: parent.width
                     height: parent.height
-                }
-                PropertyChanges {
-                    target: myMouseArea
-                    onClicked: parent.state = "default"
                 }
                 PropertyChanges {
                     target: text

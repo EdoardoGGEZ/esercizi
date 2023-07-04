@@ -11,6 +11,7 @@ Window {
         anchors.top: parent.top
         anchors.topMargin: 20
         spacing: 4
+
         Chapter {
             titolo: "CAPITOLO 1"
             contenuto: "la papaia"
