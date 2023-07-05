@@ -7,6 +7,7 @@ Column {
 
     Text {
         id: percentageText
+        text: (dad.percentage).toFixed(2)
     }
 
     Rectangle {
@@ -39,11 +40,7 @@ Column {
                 repeat: true
                 running: true
                 triggeredOnStart: true
-                onTriggered: {
-                    var rand = Math.random() % 1
-                    dad.percentage = rand
-                    percentageText.text = (dad.percentage).toFixed(2)
-                }
+                onTriggered: dad.percentage = Math.random()
             }
         }
     }
