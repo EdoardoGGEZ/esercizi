@@ -3,73 +3,93 @@ import QtQuick
 Rectangle {
     id: dad
     width: 1420
-    height: 324
+    height: title.height
+    color: "black"
+    state: "default"
+    radius: 10
     property string titolo: value
     property string contenuto: value
+    property double heightDad: 324
+    signal close
 
-    Rectangle {
-        id: content
-        anchors.centerIn: parent
-        color: "black"
-        state: "default"
-        radius: 10
+    Column {
+
+        anchors {
+            left: dad.left
+            leftMargin: 4
+            bottom: dad.Bottom
+            bottomMargin: 4
+        }
 
         Text {
-            id: text
-            width: parent.width
-            height: parent.height - 20
+            id: title
+            width: dad.width - 8
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 40
+            font.pointSize: 30
             color: "white"
             text: titolo
         }
 
-        MouseArea {
-            id: myMouseArea
-            anchors.fill: parent
-            onClicked: {
-                if (content.state === "default") {
-                    parent.state = "expanded"
-                } else
-                    parent.state = "default"
+        Text {
+            id: content
+            anchors {
+                top: title.bottom
             }
-        }
 
-        Behavior on width {
-            NumberAnimation {
-                duration: 300
-            }
-        }
+            width: dad.width - 8
+            opacity: 1
+            wrapMode: Text.Wrap
+            font.pointSize: 20
+            color: "white"
+            text: contenuto
 
-        Behavior on height {
-            NumberAnimation {
-                duration: 300
-            }
-        }
-
-        states: [
-            State {
-                name: "default"
-                PropertyChanges {
-                    target: content
-                    width: parent.width / 3
-                    height: parent.height / 5 + 20
-                }
-            },
-            State {
-                name: "expanded"
-                PropertyChanges {
-                    target: content
-                    width: parent.width
-                    height: parent.height
-                }
-                PropertyChanges {
-                    target: text
-                    horizontalAlignment: text.AlignLeft
-                    font.pointSize: 20
-                    text: contenuto
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: 300
                 }
             }
-        ]
+
+            Behavior on anchors.topMargin {
+                NumberAnimation {
+                    duration: 300
+                }
+            }
+        }
     }
+
+    MouseArea {
+        id: myMouseArea
+        anchors.fill: dad
+        onClicked: {
+            if (dad.state === "default") {
+                close()
+                //                dad.state = "expanded"
+            } else
+                dad.state = "default"
+        }
+    }
+
+    Behavior on height {
+        NumberAnimation {
+            duration: 300
+        }
+    }
+
+    states: [
+        State {
+            name: "default"
+            PropertyChanges {
+                target: content
+                opacity: 0
+                anchors.topMargin: 50
+            }
+        },
+        State {
+            name: "expanded"
+            PropertyChanges {
+                target: dad
+                height: title.height + content.height + 4
+            }
+        }
+    ]
 }
