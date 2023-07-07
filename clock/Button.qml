@@ -2,8 +2,6 @@ import QtQuick
 
 Rectangle {
     id: button
-    width: 190
-    height: 64
     color: "transparent"
     radius: 32
     state: "default"
@@ -11,6 +9,7 @@ Rectangle {
         color: "#FCB647"
         width: 1
     }
+    property alias textButton: text.text
 
     Text {
         id: text
@@ -44,7 +43,6 @@ Rectangle {
             PropertyChanges {
                 target: text
                 color: "#151B2E"
-                text: "HOVER"
             }
             PropertyChanges {
                 target: button
@@ -60,6 +58,10 @@ Rectangle {
 
             ColorAnimation {
                 target: button
+                duration: 300
+            }
+            ColorAnimation {
+                target: text
                 duration: 300
             }
         }
