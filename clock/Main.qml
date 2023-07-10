@@ -6,6 +6,7 @@ Window {
     height: 800
     visible: true
     color: "#151B2E"
+
     Button {
         textButton: "TIMER"
         anchors {
@@ -26,4 +27,6 @@ Window {
             rightMargin: 18
         }
     }
+
+    AlarmSwitch {}
 }
