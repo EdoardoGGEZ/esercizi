@@ -4,14 +4,15 @@ Rectangle {
     id: switchAllarm
     height: 60
     width: 112
-    color: disableColor
+    color: active ? selectedColor : disableColor
     radius: 8
     property color disableColor: Qt.rgba(159, 170, 176, 0.12)
     property color selectedColor: Qt.rgba(0, 180, 157, 0.2)
+    property bool active: false
 
     Image {
         id: off
-        source: "/assets/clock-switch-off-selected.png"
+        source: active ? "/assets/clock-switch-off-disable.png" : "/assets/clock-switch-off-selected.png"
         anchors {
             left: parent.left
             leftMargin: 4
@@ -22,7 +23,7 @@ Rectangle {
 
     Image {
         id: on
-        source: "/assets/clock-switch-on-disable.png"
+        source: active ? "/assets/clock-switch-on-selected.png" : "/assets/clock-switch-on-disable.png"
         anchors {
             right: parent.right
             rightMargin: 4
@@ -34,15 +35,12 @@ Rectangle {
     MouseArea {
         id: myMouseArea
         anchors.fill: switchAllarm
+        //la traccia del esercio chiedeva di non usare gli stati cosi ho usato un if
         onClicked: {
-            if (switchAllarm.color === disableColor) {
-                off.source = "/assets/clock-switch-off-disable.png"
-                on.source = "/assets/clock-switch-on-selected.png"
-                switchAllarm.color = selectedColor
+            if (active) {
+                active = false
             } else {
-                off.source = "/assets/clock-switch-off-selected.png"
-                on.source = "/assets/clock-switch-on-disable.png"
-                switchAllarm.color = disableColor
+                active = true
             }
         }
     }
