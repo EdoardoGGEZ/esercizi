@@ -21,6 +21,8 @@ qt_add_qml_module(appclock
     Button.qml
     AlarmSwitch.qml
     PageHome.qml
+    PageAlarm.qml
+    Page.qml
 )
 
 set_target_properties(appclock PROPERTIES

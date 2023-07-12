@@ -1,25 +1,30 @@
 import QtQuick
 
-Item {
+Page {
+    id: root
+    signal openAlarmPage
     Button {
         textButton: "TIMER"
         anchors {
-            fill: parent
-            topMargin: 628
+            left: root.left
+            right: root.horizontalCenter
+            bottom: root.bottom
             leftMargin: 18
+            rightMargin: 32
             bottomMargin: 108
-            rightMargin: 272
         }
     }
     Button {
         textButton: "ALARM"
         anchors {
-            fill: parent
-            topMargin: 628
-            leftMargin: 272
-            bottomMargin: 108
+            left: root.horizontalCenter
+            right: root.right
+            bottom: root.bottom
+            leftMargin: 32
             rightMargin: 18
+            bottomMargin: 108
         }
+        onClick: openAlarmPage()
     }
 
     AlarmSwitch {}

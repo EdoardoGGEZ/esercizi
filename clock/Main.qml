@@ -6,14 +6,24 @@ Window {
     width: 480
     height: 800
     visible: true
-    color: "#151B2E"
 
     StackView {
+        id: stack
         anchors.fill: parent
         initialItem: pageHome
     }
     Component {
         id: pageHome
-        PageHome {}
+
+        PageHome {
+            onOpenAlarmPage: stack.push(pageAlarm)
+        }
+    }
+    Component {
+        id: pageAlarm
+
+        PageAlarm {
+            onBack: stack.pop()
+        }
     }
 }
