@@ -12,17 +12,28 @@ Window {
         anchors.fill: parent
         initialItem: pageHome
     }
+
     Component {
         id: pageHome
 
         PageHome {
             onOpenAlarmPage: stack.push(pageAlarm)
+            onOpenPageAlarmList: stack.push(pageAlarmList)
         }
     }
+
     Component {
         id: pageAlarm
 
         PageAlarm {
+            onBack: stack.pop()
+        }
+    }
+
+    Component {
+        id: pageAlarmList
+
+        PageAlarmList {
             onBack: stack.pop()
         }
     }
