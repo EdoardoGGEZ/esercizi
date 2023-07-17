@@ -19,7 +19,7 @@ Page {
             family: "Buenos Aires"
         }
         color: "#9FAAB0"
-        text: "Alarm clock list"
+        text: qtTr("Alarm clock list")
     }
 
     Image {
@@ -94,6 +94,7 @@ Page {
 
     ListView {
         model: alarms
+        clip: true
         anchors {
             top: rect1.top
             left: root.left
