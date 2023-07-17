@@ -65,12 +65,8 @@ Page {
     Counter {
         anchors {
             top: root.top
-            left: root.left
-            bottom: root.bottom
             right: root.horizontalCenter
             topMargin: 160
-            leftMargin: 28
-            bottomMargin: 138
             rightMargin: 22
         }
         numberType: "hours"
@@ -95,12 +91,8 @@ Page {
         anchors {
             top: root.top
             left: root.horizontalCenter
-            bottom: root.bottom
-            right: root.right
             topMargin: 160
             leftMargin: 22
-            bottomMargin: 138
-            rightMargin: 28
         }
         numberType: "mins"
     }

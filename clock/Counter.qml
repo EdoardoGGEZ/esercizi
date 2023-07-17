@@ -3,6 +3,9 @@ import QtQuick
 Item {
     id: root
     property var numberType: value
+    height: count.height + 10 + arrowUp.height + 4 + divider.height + 4 + arrowDown.height
+    width: count.width
+
     Rectangle {
         id: count
         anchors {
@@ -10,6 +13,7 @@ Item {
             right: parent.right
         }
         height: 280
+        width: 190
         color: "#1B2F46"
         radius: 30
         property int numCount: 0
