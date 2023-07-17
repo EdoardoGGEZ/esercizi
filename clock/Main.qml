@@ -1,32 +1,29 @@
 import QtQuick
 import QtQuick.Window
+import QtQuick.Controls 2.5
 
 Window {
     width: 480
     height: 800
     visible: true
-    color: "#151B2E"
 
-    Button {
-        textButton: "TIMER"
-        anchors {
-            fill: parent
-            topMargin: 628
-            leftMargin: 18
-            bottomMargin: 108
-            rightMargin: 272
+    StackView {
+        id: stack
+        anchors.fill: parent
+        initialItem: pageHome
+    }
+    Component {
+        id: pageHome
+
+        PageHome {
+            onOpenAlarmPage: stack.push(pageAlarm)
         }
     }
-    Button {
-        textButton: "ALARM"
-        anchors {
-            fill: parent
-            topMargin: 628
-            leftMargin: 272
-            bottomMargin: 108
-            rightMargin: 18
+    Component {
+        id: pageAlarm
+
+        PageAlarm {
+            onBack: stack.pop()
         }
     }
-
-    AlarmSwitch {}
 }

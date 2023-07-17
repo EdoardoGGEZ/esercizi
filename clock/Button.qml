@@ -2,14 +2,16 @@ import QtQuick
 
 Rectangle {
     id: button
+    height: 64
     color: "transparent"
-    radius: 32
+    radius: height / 2
     state: "default"
     border {
         color: "#FCB647"
         width: 1
     }
     property alias textButton: text.text
+    signal click
 
     Text {
         id: text
@@ -27,13 +29,13 @@ Rectangle {
             family: "Buenos Aires"
         }
         color: "#FCB647"
-        text: "ACTIVE"
     }
 
     MouseArea {
         id: myMouseArea
         anchors.fill: button
         hoverEnabled: true
+        onClicked: click()
     }
 
     states: [

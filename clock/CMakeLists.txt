@@ -17,7 +17,13 @@ qt_add_executable(appclock
 qt_add_qml_module(appclock
     URI clock
     VERSION 1.0
-    QML_FILES Main.qml Button.qml AlarmSwitch.qml
+    QML_FILES Main.qml
+    Button.qml
+    AlarmSwitch.qml
+    PageHome.qml
+    PageAlarm.qml
+    Page.qml
+    Counter.qml
 )
 
 set_target_properties(appclock PROPERTIES
