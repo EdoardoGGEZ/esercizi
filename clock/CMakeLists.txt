@@ -24,6 +24,7 @@ qt_add_qml_module(appclock
     PageAlarm.qml
     Page.qml
     Counter.qml
+    PageAlarmList.qml
 )
 
 set_target_properties(appclock PROPERTIES

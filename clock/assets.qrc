@@ -8,5 +8,7 @@
         <file>assets/btn-back-active.svg</file>
         <file>assets/btn-arrow-hover.svg</file>
         <file>assets/btn-arrow-active.svg</file>
+        <file>assets/alarm-on-feedback.svg</file>
+        <file>assets/alarm-off-feedback.svg</file>
     </qresource>
 </RCC>
