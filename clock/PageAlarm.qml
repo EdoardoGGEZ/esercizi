@@ -3,6 +3,9 @@ import QtQuick
 Page {
     id: root
     signal back
+    signal addAlarm(int mins, int hours)
+    property alias min: mins.numCount
+    property alias hour: hours.numCount
 
     Button {
         textButton: "SET ALARM"
@@ -14,6 +17,7 @@ Page {
             bottomMargin: 30
             rightMargin: 23
         }
+        onClick: addAlarm(min, hour)
     }
 
     Text {
@@ -63,12 +67,14 @@ Page {
     }
 
     Counter {
+        id: hours
         anchors {
             top: root.top
             right: root.horizontalCenter
             topMargin: 160
             rightMargin: 22
         }
+        max: 23
         numberType: "hours"
     }
 
@@ -88,12 +94,14 @@ Page {
     }
 
     Counter {
+        id: mins
         anchors {
             top: root.top
             left: root.horizontalCenter
             topMargin: 160
             leftMargin: 22
         }
+        max: 59
         numberType: "mins"
     }
 }

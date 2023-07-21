@@ -11,6 +11,8 @@ qt_standard_project_setup(REQUIRES 6.5)
 
 qt_add_executable(appclock
     main.cpp
+    clockobject.cpp
+    clockobject.h
     assets.qrc
 )
 

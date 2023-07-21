@@ -2,10 +2,24 @@ import QtQuick
 
 Item {
     id: root
+    property int max: value
     property var numberType: value
     height: count.height + 10 + arrowUp.height + 4 + divider.height + 4 + arrowDown.height
     width: count.width
+    property int numCount: 0
+    function countUp() {
+        if (numCount === max)
+            numCount = 0
+        else
+            numCount++
+    }
 
+    function countDown() {
+        if (numCount === 0)
+            numCount = max
+        else
+            numCount--
+    }
     Rectangle {
         id: count
         anchors {
@@ -16,7 +30,6 @@ Item {
         width: 190
         color: "#1B2F46"
         radius: 30
-        property int numCount: 0
 
         Text {
             id: number
@@ -30,7 +43,7 @@ Item {
                 family: "Buenos Aires"
                 pointSize: 85
             }
-            text: count.numCount.toString().padStart(2, '0')
+            text: root.numCount.toString().padStart(2, '0')
         }
 
         Text {
@@ -62,7 +75,7 @@ Item {
             id: upMouseArea
             anchors.fill: arrowUp
             hoverEnabled: true
-            //onClicked:
+            onClicked: countUp()
         }
 
         states: [
@@ -102,7 +115,7 @@ Item {
             id: downMouseArea
             anchors.fill: arrowDown
             hoverEnabled: true
-            //onClicked:
+            onClicked: countDown()
         }
 
         states: [

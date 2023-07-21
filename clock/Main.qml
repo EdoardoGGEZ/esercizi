@@ -27,6 +27,11 @@ Window {
 
         PageAlarm {
             onBack: stack.pop()
+            onAddAlarm: function (mins, hours) {
+                clockObject.addAlarm(hours.toString().padStart(
+                                         2, '0') + ":" + mins.toString(
+                                         ).padStart(2, '0'), true)
+            }
         }
     }
 
