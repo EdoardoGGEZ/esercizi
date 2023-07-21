@@ -8,6 +8,7 @@ Rectangle {
         width: 2
     }
     property var object
+    property int index
     signal back
 
     Column {

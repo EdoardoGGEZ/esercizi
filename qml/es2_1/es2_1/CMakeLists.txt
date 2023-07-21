@@ -10,6 +10,8 @@ qt_standard_project_setup(REQUIRES 6.5)
 
 qt_add_executable(appes2_1
     main.cpp
+    recipesmodel.cpp
+    recipesmodel.h
 )
 
 qt_add_qml_module(appes2_1
