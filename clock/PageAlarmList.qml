@@ -19,7 +19,7 @@ Page {
             family: "Buenos Aires"
         }
         color: "#9FAAB0"
-        text: qtTr("Alarm clock list")
+        text: qsTr("Alarm clock list")
     }
 
     Image {
@@ -78,22 +78,8 @@ Page {
         color: "#1B2F46"
     }
 
-    ListModel {
-        id: alarms
-
-        ListElement {
-            dateTime: "7:00"
-            isActive: true
-        }
-
-        ListElement {
-            dateTime: "18:05"
-            isActive: false
-        }
-    }
-
     ListView {
-        model: alarms
+        model: clockObject
         clip: true
         anchors {
             top: rect1.top
@@ -105,9 +91,8 @@ Page {
         delegate: Item {
             id: alarm
             anchors {
-                top: alarms.top
-                left: alarms.left
-                right: alarms.right
+                left: parent.left
+                right: parent.right
             }
             height: 20 + time.height + 20 + rect2.height
             width: root.width
